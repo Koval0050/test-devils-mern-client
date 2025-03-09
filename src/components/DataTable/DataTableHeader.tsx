@@ -1,4 +1,4 @@
-import React from "react";
+import { Typography } from "ui/components";
 
 import { FileUpload } from "./FileUpload";
 
@@ -8,13 +8,10 @@ interface DataTableHeaderProps {
   onUploadComplete: () => void;
 }
 
-export const DataTableHeader: React.FC<DataTableHeaderProps> = ({
-  onUploadComplete,
-}) => {
-  return (
-    <div className={styles.header}>
-      <h2>Data Table</h2>
-      <FileUpload onUploadComplete={onUploadComplete} />
-    </div>
-  );
-};
+export const DataTableHeader = ({ onUploadComplete }: DataTableHeaderProps) => (
+  <div className={styles.header}>
+    <Typography variant="h2">Data Table</Typography>
+    
+    <FileUpload onUploadComplete={onUploadComplete} />
+  </div>
+);

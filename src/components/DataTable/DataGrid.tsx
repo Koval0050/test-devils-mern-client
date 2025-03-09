@@ -1,4 +1,4 @@
-import React from "react";
+import { Typography } from "ui/components";
 
 import { DataItem } from "types";
 
@@ -8,11 +8,13 @@ interface DataGridProps {
   data: DataItem[];
 }
 
-export const DataGrid: React.FC<DataGridProps> = ({ data }) => {
+export const DataGrid = ({ data }: DataGridProps) => {
   if (data.length === 0) {
     return (
       <div className={styles.noData}>
-        No data available. Please upload a CSV file.
+        <Typography variant="body1">
+          No data available. Please upload a CSV file.
+        </Typography>
       </div>
     );
   }
@@ -25,7 +27,9 @@ export const DataGrid: React.FC<DataGridProps> = ({ data }) => {
         <thead>
           <tr>
             {headers.map((header) => (
-              <th key={header}>{header}</th>
+              <th key={header}>
+                <Typography variant="body2">{header}</Typography>
+              </th>
             ))}
           </tr>
         </thead>
@@ -33,7 +37,9 @@ export const DataGrid: React.FC<DataGridProps> = ({ data }) => {
           {data.map((item) => (
             <tr key={item._id}>
               {headers.map((header) => (
-                <td key={`${item._id}-${header}`}>{item.data[header]}</td>
+                <td key={`${item._id}-${header}`}>
+                  <Typography variant="body2">{item.data[header]}</Typography>
+                </td>
               ))}
             </tr>
           ))}

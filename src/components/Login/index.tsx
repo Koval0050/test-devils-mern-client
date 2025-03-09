@@ -1,4 +1,4 @@
-import React from "react";
+import { Typography } from "ui/components";
 
 import { LoginForm } from "./LoginForm";
 
@@ -8,11 +8,12 @@ interface LoginProps {
   onLogin: (token: string) => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  return (
-    <div className={styles.loginContainer}>
-      <h2>Login</h2>
-      <LoginForm onLogin={onLogin} />
-    </div>
-  );
-};
+export const Login = ({ onLogin }: LoginProps) => (
+  <div className={styles.loginContainer}>
+    <Typography variant="h2" className={styles.title}>
+      Login
+    </Typography>
+    
+    <LoginForm onLogin={onLogin} />
+  </div>
+);

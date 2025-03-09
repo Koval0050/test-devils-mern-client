@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import { login } from "services/api";
+import { Button, Input, Typography } from "ui/components";
 
-import { FormInput } from "./FormInput";
-import { ErrorMessage } from "./ErrorMessage";
+import { login } from "services/api";
 
 import styles from "./Login.module.css";
 
@@ -11,7 +10,7 @@ interface LoginFormProps {
   onLogin: (token: string) => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+export const LoginForm = ({ onLogin }: LoginFormProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,22 +28,31 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.loginForm}>
-      <ErrorMessage message={error} />
-      <FormInput
-        id="username"
+      {error && (
+        <Typography variant="body2" className={styles.error}>
+          {error}
+        </Typography>
+      )}
+      
+      <Input
         label="Username"
         type="text"
         value={username}
-        onChange={setUsername}
+        onChange={(e) => setUsername(e.target.value)}
+        fullWidth
       />
-      <FormInput
-        id="password"
+
+      <Input
         label="Password"
         type="password"
         value={password}
-        onChange={setPassword}
+        onChange={(e) => setPassword(e.target.value)}
+        fullWidth
       />
-      <button type="submit">Login</button>
+
+      <Button type="submit" variant="primary" fullWidth>
+        Login
+      </Button>
     </form>
   );
 };
