@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Login from "./components/Login";
-import DataTable from "./components/DataTable";
+import { useState, useEffect } from "react";
+
+import { Login } from "./components/Login";
+import { DataTable } from "./components/DataTable";
+
 import "./App.css";
 
 function App() {
